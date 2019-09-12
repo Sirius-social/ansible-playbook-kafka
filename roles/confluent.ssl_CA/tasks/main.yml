@@ -8,8 +8,18 @@
   args:
     chdir: /var/ssl/private
     creates: /var/ssl/private/broker.keystore.jks
-- name: copy ssl related files to local ansible host
-  synchronize:
-    src: /var/ssl/private/
-    dest: generated_ssl_files
-    mode: pull
+#- name: copy ssl related files to local ansible host
+#  synchronize:
+#    src: /var/ssl/private/
+#    dest: generated_ssl_files
+#    mode: pull
+- name: step-1 copy ssl related files to local ansible host
+  archive:
+    path: /var/ssl/private/*
+    dest: /var/ssl/private/ssl.zip
+    format: zip
+- name: step-2 copy ssl related files to local ansible host
+  fetch:
+    src: /var/ssl/private/ssl.zip
+    dest: gen_ssl_files/
+    flat: yes

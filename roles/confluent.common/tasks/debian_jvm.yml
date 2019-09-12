@@ -19,7 +19,7 @@
   apt:
     name: "{{ debian_java_package_name }}"
     state: present
-    default_release: jessie-backports
+    # default_release: jessie-backports
   when: install_java|bool
 
 - name: Install rsync

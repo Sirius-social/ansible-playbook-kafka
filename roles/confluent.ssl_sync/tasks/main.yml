@@ -4,7 +4,22 @@
     state: directory
     mode: 0755
 
+#- name: copy ssl related files to host
+#  synchronize:
+#    src: gen_ssl_files/
+#    dest: "/var/ssl/private"
+
 - name: copy ssl related files to host
-  synchronize:
-    src: generated_ssl_files/
+  copy:
+    src: gen_ssl_files/ssl.zip
+    dest: "/var/ssl/private/ssl.zip"
+
+- name: unzip
+  unarchive:
+    src: "/var/ssl/private/ssl.zip"
     dest: "/var/ssl/private"
+
+- name: clean
+  file:
+    path: "/var/ssl/private/ssl.zip"
+    state: absent
