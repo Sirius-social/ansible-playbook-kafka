@@ -18,8 +18,8 @@ kafka_broker_packages:
   - confluent-rebalancer
 
 kafka_broker:
-  user: kafka
-  group: kafka
+  user: cp-kafka
+  group: confluent-kafka
   config_file: /etc/kafka/server.properties
   systemd_file: /usr/lib/systemd/system/confluent-kafka.service
   systemd_override: /etc/systemd/system/confluent-kafka.service.d
