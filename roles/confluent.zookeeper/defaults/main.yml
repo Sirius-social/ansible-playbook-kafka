@@ -12,12 +12,12 @@ zookeeper_packages:
   - confluent-kafka-2.12
 
 zookeeper:
-  user: cp-kafka
-  group: confluent
+  user: kafka
+  group: kafka
   config_file: /etc/kafka/zookeeper.properties
-  service_name: confluent-zookeeper
-  systemd_file: /usr/lib/systemd/system/confluent-zookeeper.service
-  systemd_override: /etc/systemd/system/confluent-zookeeper.service.d
+  service_name: zookeeper
+  systemd_file: /usr/lib/systemd/system/zookeeper.service
+  systemd_override: /etc/systemd/system/zookeeper.service.d
   keytab: /etc/security/keytabs
   properties:
     maxClientCnxns: 0
