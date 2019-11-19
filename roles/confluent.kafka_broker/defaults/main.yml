@@ -6,6 +6,8 @@ kafka_broker_service_overrides:
   LimitNOFILE: "{{kafka_broker_open_file_limit}}"
 kafka_broker_service_environment_overrides:
   KAFKA_HEAP_OPTS: "-Xmx1g"
+  JMX_PORT: "9999"
+  KAFKA_JMX_OPTS: "-Djava.rmi.server.hostname=localhost -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
   KAFKA_OPTS: "{{ kafka_broker_jolokia_java_arg + ' ' + kafka_broker_jaas_java_arg if security_mode in ['kerberos', 'kerberos_ssl', 'kerberos_ssl_customcerts'] else kafka_broker_jolokia_java_arg }}"
 
 kafka_broker_sysctl:
